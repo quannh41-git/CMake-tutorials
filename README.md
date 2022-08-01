@@ -2,10 +2,6 @@
 Learn CMake from CMake Cookbook
 ---
 CMake is a build system generator. It can be used for C, C++, Fortran language.
-
-
-
-
 ---
 ## Chap 1 - From a Simple Executable to libraries
 
@@ -14,7 +10,7 @@ CMake is a build system generator. It can be used for C, C++, Fortran language.
 ```
 mkdir -p build 
 cd build
-cmake ..
+cmake .. ==> outputs a series of status messages to inform the configuration
 ```
 or command with the same effect
 ```
@@ -29,4 +25,32 @@ cmake -H. -Bbuild
 - Configuration for project has been generated in the build directory
 ```
 cmake --build .
+```
+
+**CMake structure:**
+1. Makefile: the set of instructions that `make` will run to build the project
+2. CMakeFiles: temp file, used for dectect OS, compiler
+3. cmake_install.cmake: script handling install rules
+4. CMakeCache.txt: filename suggests, this is used by CMake when re-running the configuration
+
+- CMake does not enforce a specific name or location for build directory. We could use:
+```
+mkdir -p /tmp/someplace
+cd /tmp/someplace
+cmake /path-to-source
+cmake --build .
+```
+
+- CMake generates more `targets` needed for building the executable itself:
+1. all
+2. clean
+3. depend
+4. depend: invoke CMake to generate the dependencies for the source files
+5. rebuild_cache: to rebuild the CMakeCache.txt. This is needed in case new entries from the source need to be added
+6. edit_cache: let you edit cache entries directly
+7. test: run test suite with the help of CTest
+8. install: execute the installation rules for the project
+9. package: invoke **CPack** to generate a redistributable package for the project
+```
+cmake --build . --target <target-name>
 ```

@@ -54,3 +54,15 @@ cmake --build .
 ```
 cmake --build . --target <target-name>
 ```
+### Recipe-02-Building and Linking Static and Shared Libraries
+
+```
+add_library(message STATIC Message.hpp Message.cpp)
+```
+- The first argument to `add_library` is the name of target, actual name will be form by CMake with prefix `lib`
+- The library extension is determined based on the second argument **STATIC** or **SHARED** 
+
+```
+target_link_libraries(hello-world message)
+```
+- Links the library into the executable

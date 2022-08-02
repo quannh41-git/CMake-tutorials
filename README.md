@@ -66,3 +66,23 @@ add_library(message STATIC Message.hpp Message.cpp)
 target_link_libraries(hello-world message)
 ```
 - Links the library into the executable, this also guarantee that the `hello-world` executable properly depends on the `message` library.
+
+### Recipe-04/05-Conditional and Present option
+
+- Set variable
+```
+set(BUILD_SHARED_LIBS OFF)
+
+or
+
+list(APPEND _sources Message.hpp Message.cpp)
+```
+
+- Add option
+```
+option(USE_LIBRARY "Compile sources into a library?" OFF)
+```
+- When compile
+```
+cmake -D USE_LIBRARY=ON ..
+```

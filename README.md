@@ -54,7 +54,7 @@ cmake --build .
 ```
 cmake --build . --target <target-name>
 ```
-### Recipe-02-Building and Linking Static and Shared Libraries
+### Recipe-02/03-Building and Linking Static and Shared Libraries
 
 ```
 add_library(message STATIC Message.hpp Message.cpp)
@@ -65,4 +65,4 @@ add_library(message STATIC Message.hpp Message.cpp)
 ```
 target_link_libraries(hello-world message)
 ```
-- Links the library into the executable
+- Links the library into the executable, this also guarantee that the `hello-world` executable properly depends on the `message` library.

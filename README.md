@@ -78,11 +78,26 @@ or
 list(APPEND _sources Message.hpp Message.cpp)
 ```
 
-- Add option
+- The `option` command accept 3 arguments
+```
+option(<variable> "help string" [initial value])
+```
+
 ```
 option(USE_LIBRARY "Compile sources into a library?" OFF)
 ```
+
+- -D switch is used to set any type of variable for CMake: logical, path, ...
 - When compile
 ```
 cmake -D USE_LIBRARY=ON ..
 ```
+
+### Recipe-06-Specifying the compiler
+### Recipe-07-Switching the build type
+
+- **Debug**: fpr building your library or executable without optimization and with debug symbols
+- **Release**: fpr building your library or executable with optimization and without debug symbols
+- **RelWithDebInfo**: for building your library or executable with less aggressive optimizations and with debug symbols
+- **MinSizeRel**: for building your library or executable with optimizations that do not increase object code size
+
